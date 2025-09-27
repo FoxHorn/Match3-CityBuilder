@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: 9c8b64e74354cfd4495fc885544c49f1
+guid: aee19ceb4c212a44296af9ba6de311ec
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2804259843652427294
-    second: MainButtons_0
-  - first:
-      213: -9046964227654632285
-    second: MainButtons_1
-  - first:
-      213: 4015041285282016535
-    second: MainButtons_2
-  - first:
-      213: 8267121012245224375
-    second: MainButtons_3
-  - first:
-      213: -2982966838316610185
-    second: MainButtons_4
+      213: -7443756053782179069
+    second: background_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -64,7 +52,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 50, y: 50, z: 50, w: 50}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -125,111 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MainButtons_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 71
-        width: 29
-        height: 29
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e1e9bce587bbae620800000000000000
-      internalID: 2804259843652427294
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MainButtons_1
-      rect:
-        serializedVersion: 2
-        x: 11
-        y: 10
-        width: 78
-        height: 80
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3acbaf2c7f9b27280800000000000000
-      internalID: -9046964227654632285
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MainButtons_2
-      rect:
-        serializedVersion: 2
-        x: 71
-        y: 71
-        width: 29
-        height: 29
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 71d23cfb6ca48b730800000000000000
-      internalID: 4015041285282016535
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MainButtons_3
+      name: background_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 29
-        height: 29
+        width: 1920
+        height: 1035
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7bb5b0272c6bab270800000000000000
-      internalID: 8267121012245224375
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MainButtons_4
-      rect:
-        serializedVersion: 2
-        x: 71
-        y: 0
-        width: 29
-        height: 29
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 77d4e59077f5a96d0800000000000000
-      internalID: -2982966838316610185
+      spriteID: 30356abce4772b890800000000000000
+      internalID: -7443756053782179069
       vertices: []
       indices: 
       edges: []
@@ -239,7 +139,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -248,11 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MainButtons_0: 2804259843652427294
-      MainButtons_1: -9046964227654632285
-      MainButtons_2: 4015041285282016535
-      MainButtons_3: 8267121012245224375
-      MainButtons_4: -2982966838316610185
+      background_0: -7443756053782179069
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
