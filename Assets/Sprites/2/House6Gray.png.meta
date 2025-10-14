@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a000c23e44cbd334388b91079e00ef0e
+guid: 14f527fb5d1cdea48bf8248ac941e449
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2797530343429414537
-    second: GameButtons_0
+      213: 2431680125184756124
+    second: House6Gray_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,7 +52,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 6, y: 6, z: 6, w: 6}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GameButtons_0
+      name: House6Gray_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 12
-        height: 12
+        width: 172
+        height: 190
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 771638f79fc2d29d0800000000000000
-      internalID: -2797530343429414537
+      spriteID: c99c305b0301fb120800000000000000
+      internalID: 2431680125184756124
       vertices: []
       indices: 
       edges: []
@@ -139,7 +139,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GameButtons_0: -2797530343429414537
+      House6Gray_0: 2431680125184756124
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

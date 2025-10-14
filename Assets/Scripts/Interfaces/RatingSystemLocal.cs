@@ -8,6 +8,7 @@ using UnityEngine.Networking;
 using System.Threading.Tasks;
 #endif
 
+#if UNITY_EDITOR
 public static class RatingGenerator
 {
     [MenuItem("Tools/Create Rating File")]
@@ -39,6 +40,7 @@ public static class RatingGenerator
         Debug.Log($"Succefull rating file created: {filePath}");
     }
 }
+#endif
 
 public class RatingSystemLocal : IRatingSystem
 {

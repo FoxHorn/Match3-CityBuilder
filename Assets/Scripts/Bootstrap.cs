@@ -10,10 +10,18 @@ public class Bootstrap : MonoBehaviour
     [SerializeField] private ButtonSoundView _buttonSoundView;
     [SerializeField] private ButtonView _buttonNewGameView;
     [SerializeField] private GameAreaView _gameAreaView;
+    [SerializeField] private TutorialView _tutorialView;
+    [SerializeField] private ButtonView _buttonTutorialNextView;
+    [SerializeField] private ButtonView _buttonTutorialPreviousView;
+    [SerializeField] private ButtonView _buttonTutorialCloseView;
+    [SerializeField] private JockerView _jockerView;
+    [SerializeField] private ButtonView _buttonJockerCancelView;
+    [SerializeField] private ButtonJockerBuildingView[] _buttonJockerBuildingViews;
 
     private GameModel _gameModel;
     private RatingModel _ratingModel;
     private SettingsModel _settingsModel;
+    private TutorialModel _tutorialModel;
 
     private SettingsController _settingsController;
     private SaveSystemController _saveSystemController;
@@ -23,6 +31,12 @@ public class Bootstrap : MonoBehaviour
     private ButtonSoundController _buttonSoundController;
     private ButtonNewGameConroller _buttonNewGameController;
     private GameAreaController _gameAreaController;
+    private TutorialController _tutorialController;
+    private ButtonTutorialNextController _buttonTutorialNextConroller;
+    private ButtonTutorialPreviousController _buttonTutorialPreviousConroller;
+    private ButtonTutorialCloseController _buttonTutorialCloseController;
+    private JockerController _jockerController;
+    private ButtonJockerCancelController _buttonJockerCancelController;
 
     private FiniteStateMachine _fsm;
 
@@ -32,6 +46,7 @@ public class Bootstrap : MonoBehaviour
         _gameModel = new GameModel();
         _ratingModel = new RatingModel();
         _settingsModel = new SettingsModel();
+        _tutorialModel = new TutorialModel();
 
         //Set views
         _ratingView.Init(_ratingModel);
@@ -39,6 +54,8 @@ public class Bootstrap : MonoBehaviour
         _buttonSoundView.Init(_settingsModel);
         _buttonNewGameView.Init();
         _gameAreaView.Init();
+        _tutorialView.Init(_tutorialModel);
+        _jockerView.Init(_gameModel);
 
         //Set controllers
         _settingsController = new SettingsController(_settingsModel, new SettingSystemPlayerPrefs());
@@ -49,6 +66,11 @@ public class Bootstrap : MonoBehaviour
         _buttonSoundController = new ButtonSoundController();
         _buttonNewGameController = new ButtonNewGameConroller();
         _gameAreaController = new GameAreaController(_gameAreaView);
+        _tutorialController = new TutorialController(_tutorialView, _tutorialModel);
+        _buttonTutorialNextConroller = new ButtonTutorialNextController();
+        _buttonTutorialPreviousConroller = new ButtonTutorialPreviousController();
+        _buttonTutorialCloseController = new ButtonTutorialCloseController();
+        _jockerController = new JockerController(_jockerView, _gameModel, new JockerCalculatorSystemDefault());
 
         //Set managers
         SoundManager.Instance.Init(_settingsModel);
@@ -65,6 +87,18 @@ public class Bootstrap : MonoBehaviour
         _buttonContinueView.LazyInit(_buttonContinueController);
         _buttonSoundView.LazyInit(_buttonSoundController);
         _buttonNewGameView.LazyInit(_buttonNewGameController);
+        _buttonTutorialNextConroller.LazyInit(_tutorialController);
+        _buttonTutorialPreviousConroller.LazyInit(_tutorialController);
+        _buttonTutorialCloseController.LazyInit(_tutorialController);
+        _buttonJockerCancelController.LazyInit(_jockerController);
+        _buttonTutorialNextView.LazyInit(_buttonTutorialNextConroller);
+        _buttonTutorialPreviousView.LazyInit(_buttonTutorialPreviousConroller);
+        _buttonTutorialCloseView.LazyInit(_buttonTutorialCloseController);
+        _buttonJockerCancelView.LazyInit(_buttonJockerCancelController);
+        foreach(var buttonJockerBuildingView in _buttonJockerBuildingViews)
+        {
+            buttonJockerBuildingView.LazyInit(new JockerCalculatorSystemDefault());
+        }
 
         //Start fsm
         _fsm.SetState<StateMenu>();

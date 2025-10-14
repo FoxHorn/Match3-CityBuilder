@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a000c23e44cbd334388b91079e00ef0e
+guid: 51630edafcfba9742b7a617d5410794d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2797530343429414537
-    second: GameButtons_0
+      213: -1357295693053797398
+    second: PanelOutline_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GameButtons_0
+      name: PanelOutline_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 771638f79fc2d29d0800000000000000
-      internalID: -2797530343429414537
+      spriteID: aeb5c5822cae92de0800000000000000
+      internalID: -1357295693053797398
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GameButtons_0: -2797530343429414537
+      PanelOutline_0: -1357295693053797398
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

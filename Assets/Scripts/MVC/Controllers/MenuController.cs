@@ -1,5 +1,4 @@
 using System;
-using UnityEngine.EventSystems;
 
 public class MenuController
 {
@@ -18,7 +17,7 @@ public class MenuController
 
     public void PerformHide(Action onAnimationComplete)
     {
-        EventSystem.current.enabled = false;
+        InputManager.Instance.ToggleInput(false);
         _menuView.Hide(onAnimationComplete);
     }
 }
