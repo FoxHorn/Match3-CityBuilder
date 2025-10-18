@@ -37,7 +37,7 @@ public class SoundManager : Singleton<SoundManager>
                 _ => null
             };
             m_AudioSource.clip = clip;
-            m_AudioSource.pitch = randomPitch ? Random.Range(-0.75f, 1.25f) : 1;
+            m_AudioSource.pitch = randomPitch ? Random.Range(0.85f, 1.15f) : 1;
             m_AudioSource.Play();
         }
     }

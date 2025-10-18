@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonContinueView : ButtonView
+public class ButtonInteractableView : ButtonView
 {
     [SerializeField] private Button button;
 
@@ -13,7 +13,7 @@ public class ButtonContinueView : ButtonView
         }
     }
 
-    private void SetInteractable(bool interactable)
+    public void SetInteractable(bool interactable)
     {
         button.interactable = interactable;
     }

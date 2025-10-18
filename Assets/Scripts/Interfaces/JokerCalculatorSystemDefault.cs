@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class JockerCalculatorSystemDefault : IJockerCalculatorSystem
+public class JokerCalculatorSystemDefault : IJokerCalculatorSystem
 {
     private readonly Dictionary<BuildingType, int> _priceTable = new()
     {

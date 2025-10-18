@@ -2,11 +2,10 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class JockerView : View
+public class JokerView : View
 {
-    [SerializeField] private GameObject jockerPanelGameObject;
+    [SerializeField] private GameObject jokerPanelGameObject;
     [SerializeField] private CanvasGroup group;
-    [SerializeField] private ButtonJockerBuildingView[] buildings;
     [Space(10)]
     [SerializeField] private float animTime;
 
@@ -14,14 +13,11 @@ public class JockerView : View
     {
         StopAllCoroutines();
         group.alpha = 0;
+        jokerPanelGameObject.SetActive(false);
     }
 
     public void Show(Action onAnimationComplete)
     {
-        foreach (var building in buildings)
-        {
-            building.CheckInteractable();
-        }
         StartCoroutine(ShowAnim(onAnimationComplete));
     }
 
@@ -32,7 +28,7 @@ public class JockerView : View
 
     private IEnumerator ShowAnim(Action onAnimationComplete)
     {
-        jockerPanelGameObject.SetActive(true);
+        jokerPanelGameObject.SetActive(true);
         float animTime = this.animTime;
         while (animTime > 0)
         {
@@ -53,8 +49,7 @@ public class JockerView : View
             animTime -= Time.deltaTime;
             yield return null;
         }
-        group.alpha = 0;
-        jockerPanelGameObject.SetActive(false);
+        ResetView();
         onAnimationComplete?.Invoke();
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class StateGameAreaSetup : State
 {
-    private GameAreaController _gameAreaController;
+    private readonly GameAreaController _gameAreaController;
 
     public StateGameAreaSetup(FiniteStateMachine fsm, GameAreaController gameAreaController) : base(fsm)
     {
@@ -12,7 +12,7 @@ public class StateGameAreaSetup : State
     public override void Enter()
     {
         Debug.Log("Game area setup state [ENTER]");
-        //_gameAreaController.ShowArea(() => );
+        _gameAreaController.ShowArea(() => Fsm.SetState<StateGameFieldSetup>());
     }
 
     public override void Exit()

@@ -8,12 +8,13 @@ public class ResultsView : View
     [SerializeField] private GameObject jockerPanelGameObject;
     [SerializeField] private CanvasGroup group;
     [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private GameObject fireworksPrefab;
     [Space(10)]
     [SerializeField] private float animTime;
+    [SerializeField] private FireworksLauncherView fireworksLaucher;
 
     public void Show(Action onAnimationComplete)
     {
+        fireworksLaucher.StartLaunches();
         if (Model is GameModel gameModel)
         {
             scoreText.text = gameModel.CurrentGame.Score.ToString();
@@ -23,6 +24,7 @@ public class ResultsView : View
 
     public void Hide(Action onAnimationComplete)
     {
+        fireworksLaucher.StopLaunches();
         StartCoroutine(HideAnim(onAnimationComplete));
     }
 

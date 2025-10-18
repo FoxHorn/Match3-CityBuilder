@@ -54,7 +54,7 @@ public class ResetGameSystemDefault : IResetGameSystem
             Field = field,
             CurrentDeck = deck,
             Score = score,
-            JockerPoints = 3
+            JokerPoints = 3
         };
     }
 

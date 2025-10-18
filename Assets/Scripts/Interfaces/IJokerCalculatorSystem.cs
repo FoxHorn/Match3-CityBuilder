@@ -1,4 +1,4 @@
-public interface IJockerCalculatorSystem
+public interface IJokerCalculatorSystem
 {
     int GetPriceForBuildingType(BuildingType type);
 }

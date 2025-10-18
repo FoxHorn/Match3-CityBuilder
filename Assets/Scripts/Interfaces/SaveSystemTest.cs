@@ -20,7 +20,7 @@ public class SaveSystemTest : ISaveSystem
             CurrentDeck = deck,
             Field = field,
             Score = _scoreCalculatingSystem.CalculateTotalScore(field),
-            JockerPoints = 3
+            JokerPoints = 3
         };
 
         return game;

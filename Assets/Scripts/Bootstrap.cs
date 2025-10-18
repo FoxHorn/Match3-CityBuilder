@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Bootstrap : MonoBehaviour
@@ -6,7 +7,7 @@ public class Bootstrap : MonoBehaviour
     [Space(10)]
     [SerializeField] private MenuView _menuView;
     [SerializeField] private RatingView _ratingView;
-    [SerializeField] private ButtonContinueView _buttonContinueView;
+    [SerializeField] private ButtonInteractableView _buttonContinueView;
     [SerializeField] private ButtonSoundView _buttonSoundView;
     [SerializeField] private ButtonView _buttonNewGameView;
     [SerializeField] private GameAreaView _gameAreaView;
@@ -14,9 +15,11 @@ public class Bootstrap : MonoBehaviour
     [SerializeField] private ButtonView _buttonTutorialNextView;
     [SerializeField] private ButtonView _buttonTutorialPreviousView;
     [SerializeField] private ButtonView _buttonTutorialCloseView;
-    [SerializeField] private JockerView _jockerView;
-    [SerializeField] private ButtonView _buttonJockerCancelView;
-    [SerializeField] private ButtonJockerBuildingView[] _buttonJockerBuildingViews;
+    [SerializeField] private JokerView _jokerView;
+    [SerializeField] private ButtonView _buttonJokerCancelView;
+    [SerializeField] private ButtonInteractableView[] _buttonsJokerBuildingView;
+    [SerializeField] private ResultsView _resultsView;
+    [SerializeField] private ButtonView _buttonResultsCloseView;
 
     private GameModel _gameModel;
     private RatingModel _ratingModel;
@@ -35,8 +38,12 @@ public class Bootstrap : MonoBehaviour
     private ButtonTutorialNextController _buttonTutorialNextConroller;
     private ButtonTutorialPreviousController _buttonTutorialPreviousConroller;
     private ButtonTutorialCloseController _buttonTutorialCloseController;
-    private JockerController _jockerController;
-    private ButtonJockerCancelController _buttonJockerCancelController;
+    private JokerController _jokerController;
+    private ButtonJokerCancelController _buttonJokerCancelController;
+    private JokerButtonsPanelController _jokerBuildingsPanelController;
+    private List<ButtonJokerBuildingController> _jokerbuttons;
+    private ResultsController _resultsController;
+    private ButtonResultCloseController _buttonResultCloseController;
 
     private FiniteStateMachine _fsm;
 
@@ -55,7 +62,8 @@ public class Bootstrap : MonoBehaviour
         _buttonNewGameView.Init();
         _gameAreaView.Init();
         _tutorialView.Init(_tutorialModel);
-        _jockerView.Init(_gameModel);
+        _jokerView.Init(_gameModel);
+        _resultsView.Init(_gameModel);
 
         //Set controllers
         _settingsController = new SettingsController(_settingsModel, new SettingSystemPlayerPrefs());
@@ -70,7 +78,16 @@ public class Bootstrap : MonoBehaviour
         _buttonTutorialNextConroller = new ButtonTutorialNextController();
         _buttonTutorialPreviousConroller = new ButtonTutorialPreviousController();
         _buttonTutorialCloseController = new ButtonTutorialCloseController();
-        _jockerController = new JockerController(_jockerView, _gameModel, new JockerCalculatorSystemDefault());
+        _jokerController = new JokerController(_jokerView);
+        _buttonJokerCancelController = new ButtonJokerCancelController();
+        _jokerBuildingsPanelController = new JokerButtonsPanelController(_gameModel, new JokerCalculatorSystemDefault());
+        _jokerbuttons = new();
+        for (int i = 0; i < _buttonsJokerBuildingView.Length; i++)
+        {
+            _jokerbuttons.Add(new ButtonJokerBuildingController());
+        }
+        _resultsController = new ResultsController(_resultsView);
+        _buttonResultCloseController = new ButtonResultCloseController();
 
         //Set managers
         SoundManager.Instance.Init(_settingsModel);
@@ -79,6 +96,7 @@ public class Bootstrap : MonoBehaviour
         _fsm = new FiniteStateMachine();
         _fsm.AddState(new StateMenu(_fsm, _menuController, _saveSystemController, _ratingController, _settingsController));
         _fsm.AddState(new StateGameAreaSetup(_fsm, _gameAreaController));
+        _fsm.AddState(new StateGameFieldSetup(_fsm));
 
         //Lazy initialization
         _buttonContinueController.LazyInit(_fsm, _menuController);
@@ -90,15 +108,20 @@ public class Bootstrap : MonoBehaviour
         _buttonTutorialNextConroller.LazyInit(_tutorialController);
         _buttonTutorialPreviousConroller.LazyInit(_tutorialController);
         _buttonTutorialCloseController.LazyInit(_tutorialController);
-        _buttonJockerCancelController.LazyInit(_jockerController);
+        _buttonJokerCancelController.LazyInit(_jokerController);
         _buttonTutorialNextView.LazyInit(_buttonTutorialNextConroller);
         _buttonTutorialPreviousView.LazyInit(_buttonTutorialPreviousConroller);
         _buttonTutorialCloseView.LazyInit(_buttonTutorialCloseController);
-        _buttonJockerCancelView.LazyInit(_buttonJockerCancelController);
-        foreach(var buttonJockerBuildingView in _buttonJockerBuildingViews)
+        _buttonJokerCancelView.LazyInit(_buttonJokerCancelController);
+        _jokerController.LazyInit(_jokerBuildingsPanelController);
+        for (int i = 0; i < _jokerbuttons.Count; i++)
         {
-            buttonJockerBuildingView.LazyInit(new JockerCalculatorSystemDefault());
+            _jokerbuttons[i].LazyInit(_jokerBuildingsPanelController, _buttonsJokerBuildingView[i]);
+            _buttonsJokerBuildingView[i].LazyInit(_jokerbuttons[i]);
         }
+        _jokerBuildingsPanelController.LazyInit(_jokerbuttons, _jokerController);
+        _buttonResultCloseController.LazyInit(_resultsController);
+        _buttonResultsCloseView.LazyInit(_buttonResultCloseController);
 
         //Start fsm
         _fsm.SetState<StateMenu>();

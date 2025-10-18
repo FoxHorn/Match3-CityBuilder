@@ -38,7 +38,7 @@ public class Game
     public Field Field;
     public Deck CurrentDeck;
     public int Score;
-    public int JockerPoints;
+    public int JokerPoints;
 }
 
 public class GameModel : Model

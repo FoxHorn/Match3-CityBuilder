@@ -54,7 +54,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -4907,6 +4907,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3826443395784661788}
+  - component: {fileID: 4078078457109497675}
   - component: {fileID: 6854098085012425745}
   - component: {fileID: 3146733855692416279}
   m_Layer: 5
@@ -4936,6 +4937,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -233}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4078078457109497675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4232104714682316320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd69c2c5eec94a46b10fde7add7b503, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireworkView
+  particles: {fileID: 6854098085012425745}
+  subEmittor: {fileID: 2918462379997305931}
 --- !u!198 &6854098085012425745
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4946,14 +4961,14 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 1
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 3
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -5772,9 +5787,9 @@ ParticleSystem:
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2
-      minMaxState: 3
+      minMaxState: 0
       scalar: 0
-      minScalar: 0
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5883,7 +5898,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 0.5
+        scalar: 1.3
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -5933,8 +5948,8 @@ ParticleSystem:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-      cycleCount: 0
-      repeatInterval: 1
+      cycleCount: 1
+      repeatInterval: 0.01
       probability: 1
   SizeModule:
     enabled: 0
@@ -8763,7 +8778,7 @@ ParticleSystem:
   TriggerModule:
     enabled: 0
     serializedVersion: 2
-    inside: 1
+    inside: 0
     outside: 0
     enter: 0
     exit: 0
